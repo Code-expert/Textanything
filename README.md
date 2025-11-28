@@ -1,4 +1,4 @@
-```
+
 # TextAnything – Technical Assignment  
 This repository contains solutions for both **Test 1 (Geofence Event Processing)** and **Test 2 (Leaderboard Points Ranking)** as required in the TextAnything engineering assessment.
 
@@ -136,4 +136,5 @@ Email: *harshraj9804@gmail.com*
 ```
 
 ---
+
 
