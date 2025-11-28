@@ -1,0 +1,121 @@
+{
+  "info": {
+    "name": "Geofence Service API",
+    "_postman_id": "e3d3b3ae-3c8f-4d35-b7b0-f203f714a2dd",
+    "description": "Postman collection to test Geofence Event Processing Service",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Health Check",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:3000/health",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3000",
+          "path": ["health"]
+        }
+      }
+    },
+    {
+      "name": "Get Zones",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:3000/zones",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3000",
+          "path": ["zones"]
+        }
+      }
+    },
+    {
+      "name": "Send Location Event - Inside Zone A",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"vehicleId\": \"TX123\",\n  \"lat\": 19.0760,\n  \"lng\": 72.8777,\n  \"timestamp\": \"2025-11-28T10:00:00Z\"\n}"
+        },
+        "url": {
+          "raw": "http://localhost:3000/events/location",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3000",
+          "path": ["events", "location"]
+        }
+      }
+    },
+    {
+      "name": "Send Location Event - Move Outside All Zones",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"vehicleId\": \"TX123\",\n  \"lat\": 19.050,\n  \"lng\": 72.820,\n  \"timestamp\": \"2025-11-28T10:05:00Z\"\n}"
+        },
+        "url": {
+          "raw": "http://localhost:3000/events/location",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3000",
+          "path": ["events", "location"]
+        }
+      }
+    },
+    {
+      "name": "Send Location Event - Enter Zone B (Rectangle)",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"vehicleId\": \"TX123\",\n  \"lat\": 19.070,\n  \"lng\": 72.870,\n  \"timestamp\": \"2025-11-28T10:10:00Z\"\n}"
+        },
+        "url": {
+          "raw": "http://localhost:3000/events/location",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3000",
+          "path": ["events", "location"]
+        }
+      }
+    },
+    {
+      "name": "Get Vehicle Status - TX123",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:3000/vehicles/TX123/status",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3000",
+          "path": ["vehicles", "TX123", "status"]
+        }
+      }
+    }
+  ]
+}
